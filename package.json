@@ -1,0 +1,23 @@
+{
+  "name": "vitepress-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIC",
+  "devDependencies": {
+    "@types/node": "^18.6.1",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "vite": "^3.0.3",
+    "vite-plugin-restart": "^0.2.0",
+    "vitepress": "1.0.0-alpha.4"
+  }
+}

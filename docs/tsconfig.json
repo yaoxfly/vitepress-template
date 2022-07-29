@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    //元素隐式具有 “any“ 类型，因为类型为 “any“ 的表达式不能用于索引类型
+    "suppressImplicitAnyIndexErrors": true,
+    //允许使用import.meta
+    "types": ["vite/client"]
+  },
+  "include": ["**/*"],
+  "exclude": ["node_mosdules"],
+  "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "allowSyntheticDefaultImports": true
+}
