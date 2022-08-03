@@ -14,3 +14,5 @@ hero:
       link: https://github.com/vuejs/vitepress
 ---
 
+
+<layout></layout>
