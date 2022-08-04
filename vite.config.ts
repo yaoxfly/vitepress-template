@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import ViteRestart from 'vite-plugin-restart'
+import eslintPlugin from 'vite-plugin-eslint'
+import { resolve } from 'path'
 export default defineConfig({
   plugins: [
     vue(),
@@ -11,5 +13,15 @@ export default defineConfig({
         // './.vitepress/nav/index.ts',
       ]
     }),
+    eslintPlugin({
+      include: [
+        'docs/**/*.vue',
+        'docs/**/*.tsx',
+        'docs/**/*.ts'
+      ],
+      exclude: ['./node\_modules/**', './dist'],
+      cache: false
+    })
   ],
+  resolve: { alias: { '@': resolve(__dirname, 'docs') } }
 })

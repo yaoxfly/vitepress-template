@@ -16,15 +16,14 @@
     "suppressImplicitAnyIndexErrors": true,
     "types": ["vite/client"]
   },
-
   "include": [
     "typings/**/*.d.ts",
     "docs/**/*.vue",
     "docs/**/*.tsx",
     "docs/**/*.ts",
-    "**/.**/**/*.ts",
-    "**/.**/**/*.tsx",
-    "**/.**/**/*.vue"
+    "docs/.**/**/*.ts",
+    "docs/.**/**/*.tsx",
+    "docs/.**/**/*.vue"
   ],
   "exclude": ["**/node_modules/**", "**/dist/**"],
   "extensions": [".js", ".ts", ".tsx", ".jsx", ".vue"],

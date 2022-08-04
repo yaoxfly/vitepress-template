@@ -1,14 +1,14 @@
 import { defineConfig } from 'vitepress'
 export default defineConfig(
-  { 
-    /**---基础配置-- */
+  {
+    /** ---基础配置-- */
     lang: 'zh-CN',
     title: 'yaoxfly',
     lastUpdated: true,
     description: '个人博客',
-    /**---部署配置-- */
+    /** ---部署配置-- */
     base: '/',
-    /**---主题配置-- */
+    /** ---主题配置-- */
     themeConfig: {
       algolia: {
         appId: 'HAT6A1ER66',
@@ -17,10 +17,10 @@ export default defineConfig(
       },
       lastUpdatedText: '最近更新时间',
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/yaoxfly' },
+        { icon: 'github', link: 'https://github.com/yaoxfly' }
       ],
-      /**---头部导航-- */
-      nav:[
+      /** ---头部导航-- */
+      nav: [
         {
           text: '首页',
           link: '/'
@@ -33,7 +33,7 @@ export default defineConfig(
           text: '百度',
           link: 'http://www.baidu.com' // 外部链接有特定标识
         },
-      
+
         {
           text: '下拉菜单',
           items: [
@@ -43,19 +43,19 @@ export default defineConfig(
           ]
         }
       ],
-  
-      /**---侧边栏-- */
+
+      /** ---侧边栏-- */
       sidebar: {
         '/component/': [
           {
-          text: '一级标题',
-          collapsible: true,
-          items: [
-            { text: '前言', link: '/component/'},
-            { text: '按钮', link: '/component/button' },
-            { text: '测试', link: '/component/test' }
-          ]
-        }
+            text: '一级标题',
+            collapsible: true,
+            items: [
+              { text: '前言', link: '/component/' },
+              { text: '按钮', link: '/component/button' },
+              { text: '测试', link: '/component/test' }
+            ]
+          }
         ],
         '/utils/': [{
           text: '一级标题',
@@ -63,11 +63,11 @@ export default defineConfig(
           items: [
             {
               text: '二级标题1',
-              link: '/utils/test1',
+              link: '/utils/test1'
             },
             {
               text: '二级标题2',
-              link: '/utils/test',
+              link: '/utils/test'
             }
           ]
         }]
@@ -75,9 +75,9 @@ export default defineConfig(
       footer: {
         message: '©2022  By yaoxfly',
         copyright: 'Power by vitepress'
-      },
+      }
     },
-    /**---md配置-- */
+    /** ---md配置-- */
     markdown: {}
   }
 )
