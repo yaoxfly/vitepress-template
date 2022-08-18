@@ -5,11 +5,18 @@ export default defineConfig(
     lang: 'zh-CN',
     title: 'yaoxfly',
     lastUpdated: true,
-    description: '个人博客',
+    description: 'yaoxfly&个人博客',
+    head: [
+      ['link', { rel: 'icon', href: '/icon/favicon.ico' }],
+      ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
+    ],
     /** ---部署配置-- */
     base: '/',
+
     /** ---主题配置-- */
     themeConfig: {
+      siteTitle: 'yaoxfly',
+      // logo: '/icon/favicon.ico',
       algolia: {
         appId: 'HAT6A1ER66',
         apiKey: '9fe72716842d32cc387517b399a30a8d',
@@ -25,6 +32,7 @@ export default defineConfig(
           text: '首页',
           link: '/'
         },
+
         {
           text: '组件文档',
           link: '/component/'
