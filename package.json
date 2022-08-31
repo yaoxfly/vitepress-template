@@ -36,7 +36,7 @@
     "vite": "^3.0.3",
     "vite-plugin-eslint": "^1.7.0",
     "vite-plugin-restart": "^0.2.0",
-    "vitepress": "1.0.0-alpha.5",
+    "vitepress": "1.0.0-alpha.13",
     "vue-eslint-parser": "^9.0.3",
     "vue-tsc": "^0.39.4"
   }

@@ -22,6 +22,8 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'no-console': 'warn',
+    'no-debugger': 'warn',
     /* --vue相关-- */
     'vue/multi-word-component-names': 'off',
     'vue/comment-directive': 'off',
