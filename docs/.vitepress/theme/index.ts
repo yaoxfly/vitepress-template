@@ -1,7 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import { App } from 'vue'
+import { dispatchEventStorage } from '../utils/tools'
 const modules = import.meta.glob('../component/*.vue')
+dispatchEventStorage()
 export default {
   ...DefaultTheme,
   enhanceApp ({ app }: { app: App }) {

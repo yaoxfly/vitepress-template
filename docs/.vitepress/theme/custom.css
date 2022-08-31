@@ -1,3 +1,52 @@
-/* .vp-doc [class*='language-'] pre {
-  background: #eaeefb;
-} */
+:root {
+  --vp-nav-height-desktop: 60px;
+  --vp-c-text-dark-1: #fff;
+  --vp-c-white-soft: #f4f4f4;
+  --vp-c-black-soft: #2f3133;
+  /*--自定义---*/
+  --custom-c-text-1: var(--vp-c-text-dark-1);
+  --custom-c-nav-bc: rgba(255, 255, 255, 0.7);
+  --custom-c-footer-bc: top;
+  --custom-font-size-title: 16px;
+  --custom-font-size-content: 14px;
+  --custom-font-size-assist: 12px
+}
+
+
+
+/*******滚动条*********/
+
+::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  min-height: 50px;
+  max-height: 100px;
+  border-radius: 3px;
+  background-color: rgba(144, 147, 153, 0.2);
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(144, 147, 153, 0.2);
+  transition: background-color 0.3s;
+}
+
+
+/*******common*********/
+.common-piece {
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.common-bold {
+  font-weight: bold
+}
