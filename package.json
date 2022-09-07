@@ -9,7 +9,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.scss --fix"
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.scss,.css,.sass,.less --fix"
   },
   "keywords": [],
   "author": "yaoxfly",
