@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
+import './icon-font/iconfont.css'
 import { App } from 'vue'
 import { dispatchEventStorage } from '../utils/tools'
 const modules = import.meta.glob('../component/*.vue')

@@ -21,6 +21,19 @@ import Card from './card.vue'
 <style lang="scss">
 .layout-main {
   padding: 32px 0;
+  animation: fadeDownIn 1s both;
+  @keyframes fadeDownIn {
+    from {
+      opacity: 0;
+      transform: translate(0, 50px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
   @media (min-width: 1280px) {
     width: 1200px;
   }
@@ -52,6 +65,16 @@ import Card from './card.vue'
 
     &__right {
       width: 80%;
+    }
+
+    .card {
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (width: 768px) {
+    .layout-main__left {
+      margin-left: 16px;
     }
   }
 }

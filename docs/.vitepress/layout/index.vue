@@ -1,25 +1,28 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { StorageSetItemEvent, setProperty, getPropertyValue } from '../utils/tools'
 import Main from './main.vue'
 onMounted(() => {
   init()
 })
 
+/** --banner --- */
+const image = ref(`url('/home/banner_${Math.round(Math.random()) + 1}.jpg') top center no-repeat`)
+
+/** --初始化 --- */
 const init = () => {
   const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
   const Layout = document.querySelector('.Layout') as HTMLElement
-  vpNav.classList.add('is-home')
-  Layout.classList.add('is-home')
+  vpNav?.classList.add('is-home')
+  Layout?.classList.add('is-home')
   setTheme(window.localStorage.getItem('vitepress-theme-appearance'))
   window.addEventListener('storageSetItemEvent', (e: StorageSetItemEvent) => {
     if (e.key === 'vitepress-theme-appearance') {
       setTheme(e.newValue)
     }
   })
-  setImage()
-  handleScroll()
-  window.addEventListener('scroll', () => { handleScroll() }, true)
+  scroll()
+  window.addEventListener('scroll', () => { scroll() }, true)
 }
 
 /** --主题切换 --- */
@@ -29,44 +32,34 @@ const setTheme = (value?: string | null) => {
     setProperty('--custom-c-text-1', getPropertyValue('--vp-c-text-light-1'))
     setProperty('--custom-c-nav-bc', 'rgba(36, 36, 36)')
     setProperty('--custom-c-footer-bc', 'bottom')
-    // vpNav.classList.add('dark')
-    // vpNav.classList.add('dark')
-    vpNav.classList.add('filter')
-    vpNav.classList.remove('transparent')
+    vpNav?.classList.add('filter')
+    vpNav?.classList.remove('transparent')
   } else {
     setProperty('--custom-c-text-1', getPropertyValue('--vp-c-text-dark-1'))
     setProperty('--custom-c-nav-bc', 'rgba(255, 255, 255, 0.7)')
     setProperty('--custom-c-footer-bc', 'top')
-    // vpNav.classList.remove('dark')
-    handleScroll(value)
+    scroll(value)
   }
 }
 
-/** --图片切换 --- */
-const setImage = () => {
-  const layoutNav = document.querySelector('.layout__nav') as HTMLElement
-  layoutNav.style.background = `url('/home/banner_${Math.round(Math.random()) + 1}.jpg') top center no-repeat`
-  layoutNav.style.backgroundSize = '100% 100%' // 100%  100%可以达到平铺效果但是不好看
-}
-
 /** --nav滚动样式交替 --- */
-const handleScroll = (theme = window.localStorage.getItem('vitepress-theme-appearance')) => {
+const scroll = (theme = window.localStorage.getItem('vitepress-theme-appearance')) => {
   if (theme === 'dark') return
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
   const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
-  if (scrollTop > vpNav.offsetHeight) {
-    vpNav.classList.add('filter')
-    vpNav.classList.remove('transparent')
+  if (scrollTop > vpNav?.offsetHeight) {
+    vpNav?.classList.add('filter')
+    vpNav?.classList.remove('transparent')
   } else {
-    vpNav.classList.add('transparent')
-    vpNav.classList.remove('filter')
+    vpNav?.classList.add('transparent')
+    vpNav?.classList.remove('filter')
   }
 }
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', () => { handleScroll() })
+  window.removeEventListener('scroll', () => { scroll() })
   const Layout = document.querySelector('.Layout') as HTMLElement
-  Layout.classList.remove('is-home')
+  Layout?.classList.remove('is-home')
 })
 
 </script>
@@ -89,7 +82,6 @@ export default {
         </div>
       </div>
     </section>
-
     <Main />
   </div>
 </template>
@@ -132,28 +124,11 @@ export default {
       padding-top: 0;
     }
 
-    .VPNavBarMenuLink.active {
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        width: 50%;
-        height: 1px;
-        background: var(--vp-c-brand);
-        bottom: 0;
-        left: 0;
-        left: 25%;
-        top: 42px;
-      }
-    }
-
     .VPSocialLink {
       margin-bottom: 2px;
     }
 
     /*------不再改变的--end------*/
-    // color: #fff;
 
     .VPNav.no-sidebar.is-home {
       &.transparent {
@@ -215,7 +190,6 @@ export default {
       .VPSocialLink {
         color: inherit;
       }
-
     }
   }
 }
@@ -226,12 +200,36 @@ export default {
   }
 }
 
-/**---中间内容区域--- */
-
+/**---中间内容区域(自定义)--- */
 .layout {
   &__nav {
     width: 100%;
     height: 60vh;
+    animation: position 10s linear infinite alternate, fadeInDown 1s both;
+    background: v-bind(image);
+    background-size: 110% 100%;
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translate(0, -50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes position {
+      from {
+        background-position-x: 0;
+      }
+
+      to {
+        background-position-x: center;
+      }
+    }
   }
 
   &__banner-text {
@@ -257,6 +255,7 @@ export default {
       from {
         width: 0;
       }
+
       100% {
         width: 210px;
       }
@@ -264,12 +263,12 @@ export default {
 
     @keyframes off {
       50% {
-       border-right-color: #fff;
+        border-right-color: #fff;
       }
     }
   }
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     .layout__nav {
       height: 40vh;
     }
@@ -280,6 +279,17 @@ export default {
 .VPFooter {
   background-image: linear-gradient(to var(--custom-c-footer-bc), rgba(50, 50, 50, 1), rgba(25, 26, 50, 0.8)),
     url('/home/footer.jpg');
+  animation: footer 10s linear infinite;
+
+  @keyframes footer {
+    from {
+      background-position-y: 0;
+    }
+
+    to {
+      background-position-y: center;
+    }
+  }
 
   .message,
   .copyright {

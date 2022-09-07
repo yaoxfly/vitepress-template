@@ -2,9 +2,30 @@
 * @Author: yx
 * @Description: 右边的用户信息
 -->
+<script setup lang="ts">
+const socialLinks = [
+  {
+    path: 'https://github.com/yaoxfly',
+    icon: 'icon-github'
+  },
+  {
+    path: 'https://gitee.com/yaoxfly',
+    icon: 'icon-gitee'
+  }
+]
+
+type SocialLinks = {
+  path?: string,
+  icon?: string
+}
+
+const jump = (param: SocialLinks) => {
+  window.open(param.path)
+}
+</script>
 
 <template>
-  <div class="layout-info common-piece ">
+  <div class="layout-info common-piece">
     <div class="layout-info__flex">
       <div class="layout-info__flex-img">
         <img
@@ -28,38 +49,27 @@
         </section>
       </div>
 
-      <div class="layout-info__add-bookmark">
-        加入标签
+      <div
+        class="layout-info__add-bookmark"
+        @click="jump({
+          path:'https://github.com/yaoxfly'
+        })"
+      >
+        关注我
       </div>
 
-      <!-- <div class="special-layout-info__icon-content">
-        <p class="iconfont icon-github special-layout-info__icon" @click="jump(1)" />
-        <p class="iconfont icon-gitee special-layout-info__icon" @click="jump(2)" />
-      </div> -->
+      <div class="layout-info__icon-content">
+        <p
+          v-for="(item, index) in socialLinks "
+          :key="`socialLinks${index}`"
+          class="iconfont  layout-info__icon"
+          :class="[item.icon, { 'layout-info__special-icon': item.icon === 'icon-gitee' }]"
+          @click="jump(item)"
+        />
+      </div>
     </div>
   </div>
 </template>
-<!--
-<script>
-
-export default {
-  mounted () { },
-  methods: {
-    // 跳到GitHub
-    jump (param) {
-      const keyMap = {
-        1: () => {
-          window.open('https://github.com/yaoxfly', 'target')
-        },
-        2: () => {
-          window.open('https://gitee.com/yaoxfly', 'target')
-        }
-      }
-      keyMap[param]()
-    }
-  }
-}
-</script> -->
 
 <style lang="scss">
 .layout-info {
@@ -90,13 +100,13 @@ export default {
     flex-flow: row;
     justify-content: center;
     align-content: center;
-
   }
 
   &__data {
     width: 100%;
     display: flex;
     justify-content: space-around;
+
     section {
       margin-top: 20px;
     }
@@ -109,29 +119,50 @@ export default {
     user-select: none;
     cursor: pointer;
     margin-top: 10px;
-
-    &:hover {
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    &::after {
+      position: absolute;
+      content: '';
+      z-index: -1;
       background: var(--vp-c-brand);
+      width: 0%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 4px;
+    }
 
+    &:hover::after {
+      width: 100%;
+      transition: all 0.8s ease;
     }
   }
 
   &__icon {
-    font-size: 26px;
+    font-size: 24px;
 
     &:hover {
       cursor: pointer;
       color: var(--vp-c-brand);
+      transition: all 0.8s;
     }
   }
 
   &__icon-content {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-top: 10px;
 
     p:not(:first-child) {
       margin-left: 15px;
     }
+  }
+
+  &__special-icon {
+    font-size: 22px;
   }
 }
 </style>
