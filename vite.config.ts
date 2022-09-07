@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import ViteRestart from 'vite-plugin-restart'
+// import ViteRestart from 'vite-plugin-restart'
 import eslintPlugin from 'vite-plugin-eslint'
 import { resolve } from 'path'
 import postcssImport from 'postcss-import'
@@ -10,11 +10,11 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    ViteRestart({
-      restart: [
-        // './.vitepress/nav/index.ts',
-      ]
-    }),
+    // ViteRestart({
+    //   restart: [
+    //     // './.vitepress/nav/index.ts',
+    //   ]
+    // }),
     eslintPlugin({
       include: [
         'docs/**/*.vue',

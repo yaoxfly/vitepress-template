@@ -12,36 +12,23 @@ export default defineConfig(
     ],
     /** ---部署配置-- */
     base: '/',
-
     /** ---主题配置-- */
     themeConfig: {
-      siteTitle: 'yaoxfly',
-      // logo: '/icon/favicon.ico',
-      algolia: {
-        appId: 'HAT6A1ER66',
-        apiKey: '9fe72716842d32cc387517b399a30a8d',
-        indexName: ''
-      },
-      lastUpdatedText: '最近更新时间',
-      socialLinks: [
-        { icon: 'github', link: 'https://github.com/yaoxfly' }
-      ],
       /** ---头部导航-- */
       nav: [
         {
           text: '首页',
           link: '/'
         },
-
         {
           text: '组件文档',
-          link: '/component/'
+          link: '/component/button',
+          activeMatch: '/component/'
         },
         {
-          text: '百度',
-          link: 'http://www.baidu.com' // 外部链接有特定标识
+          text: '项目地址',
+          link: 'https://github.com/yaoxfly/vitepress-template'
         },
-
         {
           text: '下拉菜单',
           items: [
@@ -59,7 +46,6 @@ export default defineConfig(
             text: '一级标题',
             collapsible: true,
             items: [
-              { text: '前言', link: '/component/' },
               { text: '按钮', link: '/component/button' },
               { text: '测试', link: '/component/test' }
             ]
@@ -79,6 +65,21 @@ export default defineConfig(
             }
           ]
         }]
+      },
+      siteTitle: 'yaoxfly',
+      // logo: '/icon/favicon.ico',
+      algolia: {
+        appId: 'HAT6A1ER66',
+        apiKey: '9fe72716842d32cc387517b399a30a8d',
+        indexName: ''
+      },
+      lastUpdatedText: '最近更新时间',
+      socialLinks: [
+        { icon: 'github', link: 'https://github.com/yaoxfly' }
+      ],
+      docFooter: {
+        prev: '上一篇',
+        next: '下一篇'
       },
       footer: {
         message: '©2022  By yaoxfly',
