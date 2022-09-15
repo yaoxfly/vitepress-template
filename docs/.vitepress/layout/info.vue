@@ -1,6 +1,6 @@
 <!--
 * @Author: yx
-* @Description: 右边的用户信息
+* @Description: 用户信息
 -->
 <script setup lang="ts">
 const socialLinks = [
@@ -38,7 +38,7 @@ const jump = (param: SocialLinks) => {
         <section>
           <p>文章</p>
           <p class="common-bold">
-            0
+            1
           </p>
         </section>
         <section>
@@ -51,19 +51,24 @@ const jump = (param: SocialLinks) => {
 
       <div
         class="layout-info__add-bookmark"
-        @click="jump({
-          path:'https://github.com/yaoxfly'
-        })"
+        @click="
+          jump({
+            path: 'https://github.com/yaoxfly',
+          })
+        "
       >
         关注我
       </div>
 
       <div class="layout-info__icon-content">
         <p
-          v-for="(item, index) in socialLinks "
+          v-for="(item, index) in socialLinks"
           :key="`socialLinks${index}`"
-          class="iconfont  layout-info__icon"
-          :class="[item.icon, { 'layout-info__special-icon': item.icon === 'icon-gitee' }]"
+          class="iconfont layout-info__icon"
+          :class="[
+            item.icon,
+            { 'layout-info__special-icon': item.icon === 'icon-gitee' },
+          ]"
           @click="jump(item)"
         />
       </div>
@@ -73,9 +78,6 @@ const jump = (param: SocialLinks) => {
 
 <style lang="scss">
 .layout-info {
-  // margin-top: 20px;
-  padding-bottom: 1rem;
-
   &__header {
     width: 80px;
     border-radius: 50%;
@@ -108,17 +110,17 @@ const jump = (param: SocialLinks) => {
     justify-content: space-around;
 
     section {
-      margin-top: 20px;
+      margin-top: 8px;
     }
   }
 
   &__add-bookmark {
     line-height: 2;
-    background: #333;
+    background: var(--vp-c-gray-dark-2);
     color: #fff;
     user-select: none;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
     border-radius: 4px;
     position: relative;
     z-index: 1;
@@ -133,31 +135,31 @@ const jump = (param: SocialLinks) => {
       bottom: 0;
       right: 0;
       border-radius: 4px;
+      transition: width 0.5s ease;
     }
 
     &:hover::after {
       width: 100%;
-      transition: all 0.8s ease;
+      transition: width 0.5s ease;
     }
   }
 
   &__icon {
     font-size: 24px;
-
+    transition: color 0.4s ease;
     &:hover {
       cursor: pointer;
       color: var(--vp-c-brand);
-      transition: all 0.8s;
+      transition: color 0.4s ease;
     }
   }
 
   &__icon-content {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-
+    margin-top: 8px;
     p:not(:first-child) {
-      margin-left: 15px;
+      margin-left: 12px;
     }
   }
 

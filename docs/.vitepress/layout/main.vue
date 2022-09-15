@@ -1,10 +1,12 @@
 <!--
 * @Author: yx
-* @Description: 内容区域
+* @Description: 中间内容区域
 -->
 <script setup lang="ts">
 import Info from './info.vue'
 import Card from './card.vue'
+import TagLists from './tag-lists.vue'
+import RecommendList from './recommend-list.vue'
 </script>
 
 <template>
@@ -14,6 +16,8 @@ import Card from './card.vue'
     </div>
     <div class="layout-main__right ">
       <Info />
+      <RecommendList />
+      <TagLists />
     </div>
   </div>
 </template>
@@ -22,6 +26,7 @@ import Card from './card.vue'
 .layout-main {
   padding: 32px 0;
   animation: fadeDownIn 1s both;
+
   @keyframes fadeDownIn {
     from {
       opacity: 0;

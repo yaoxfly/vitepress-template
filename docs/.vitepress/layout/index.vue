@@ -237,7 +237,6 @@ export default {
     width: 100%;
     height: 100%;
     color: #fff;
-    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,7 +244,7 @@ export default {
   }
 
   &__banner-animation {
-    width: 210px;
+    width: 240px;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid transparent;
@@ -257,7 +256,7 @@ export default {
       }
 
       100% {
-        width: 210px;
+        width: 240px;
       }
     }
 

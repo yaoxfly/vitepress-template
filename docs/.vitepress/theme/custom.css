@@ -7,7 +7,7 @@
   --custom-c-text-1: var(--vp-c-text-dark-1);
   --custom-c-nav-bc: rgba(255, 255, 255, 0.7);
   --custom-c-footer-bc: top;
-  --custom-font-size-title: 16px;
+  --custom-font-size-title: 18px;
   --custom-font-size-content: 14px;
   --custom-font-size-assist: 12px
 }
@@ -44,7 +44,7 @@
 
 /*******common*********/
 .common-piece {
-  padding: 1rem 1.2rem;
+  padding: 16px 20px;
   border-radius: 8px;
   background: var(--vp-c-bg);
 }
@@ -52,7 +52,6 @@
 .common-bold {
   font-weight: bold
 }
-
 
 @media (min-width: 960px) {
   .Layout .VPNavBarMenuLink.active {
@@ -82,8 +81,8 @@
     }
   }
 
-  /**---黑暗模式除首页外导航栏最右边块缺失补充-----**/
 
+  /**---黑暗模式除首页外导航栏最右边块缺失补充-----**/
   .dark .VPNavBar.has-sidebar .content {
     position: relative;
   }

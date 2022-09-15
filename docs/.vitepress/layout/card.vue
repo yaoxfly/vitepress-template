@@ -1,3 +1,7 @@
+<!--
+* @Author: yx
+* @Description: 博客内容
+-->
 <script setup lang="ts">
 import Tag from './tag.vue'
 </script>
@@ -24,7 +28,7 @@ import Tag from './tag.vue'
 
 <style lang="scss">
 .card {
-  line-height: 2;
+  // line-height: 2;
   cursor: pointer;
 
   // margin-top: 20px;
@@ -44,11 +48,12 @@ import Tag from './tag.vue'
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: var(--custom-font-size-content);
+    padding-top: 4px;
   }
 
   &__time {
     color: var(--vp-c-text-2);
-    font-size: var(--custom-font-size-content);
+    font-size: var(--custom-font-size-assist);
   }
 }
 </style>
