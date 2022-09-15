@@ -29,7 +29,7 @@ const keyMap = {
   black: getPropertyValue('--vp-c-black')
 }
 
-tempColor.value = keyMap[color.value]
+tempColor.value = keyMap[color.value] || tempColor.value
 </script>
 
 <template>
@@ -41,12 +41,13 @@ tempColor.value = keyMap[color.value]
 <style lang="scss">
 .tag {
   display: inline;
-  width: 100%;
   border-radius: 4px;
   background: v-bind(tempColor);
   padding: 4px 8px;
   font-size: var(--custom-font-size-assist);
   text-align: center;
   color: #fff;
+  cursor: pointer;
+  user-select: none;
 }
 </style>
