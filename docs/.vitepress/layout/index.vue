@@ -2,12 +2,13 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { StorageSetItemEvent, setProperty, getPropertyValue } from '../utils/tools'
 import Main from './main.vue'
+import { base } from '../custom-config'
 onMounted(() => {
   init()
 })
 
 /** --banner --- */
-const image = ref(`url('/home/banner_${Math.round(Math.random()) + 1}.jpg') top center no-repeat`)
+const image = ref(`url('${base}/home/banner_${Math.round(Math.random()) + 1}.jpg') top center no-repeat`)
 
 /** --初始化 --- */
 const init = () => {
