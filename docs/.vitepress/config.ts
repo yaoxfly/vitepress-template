@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { base } from './custom-config'
+import nav from './custom-config/nav'
+import sidebar from './custom-config/sidebar'
 export default defineConfig(
   {
     /** ---基础配置-- */
@@ -16,57 +18,9 @@ export default defineConfig(
     /** ---主题配置-- */
     themeConfig: {
       /** ---头部导航-- */
-      nav: [
-        {
-          text: '首页',
-          link: '/'
-        },
-        {
-          text: '组件文档',
-          link: '/component/button',
-          activeMatch: '/component/'
-        },
-        {
-          text: '项目地址',
-          link: 'https://github.com/yaoxfly/vitepress-template'
-        },
-        {
-          text: '下拉菜单',
-          items: [
-            { text: 'Item A', link: '/item-1' },
-            { text: 'Item B', link: '/item-2' },
-            { text: 'Item C', link: '/item-3' }
-          ]
-        }
-      ],
-
+      nav,
       /** ---侧边栏-- */
-      sidebar: {
-        '/component/': [
-          {
-            text: '一级标题',
-            collapsible: true,
-            items: [
-              { text: '按钮', link: '/component/button' },
-              { text: '测试', link: '/component/test' }
-            ]
-          }
-        ],
-        '/utils/': [{
-          text: '一级标题',
-          collapsible: true,
-          items: [
-            {
-              text: '二级标题1',
-              link: '/utils/test1'
-            },
-            {
-              text: '二级标题2',
-              link: '/utils/test'
-            }
-          ]
-        }]
-      },
+      sidebar,
       siteTitle: 'yaoxfly',
       // logo: '/icon/favicon.ico',
       algolia: {
