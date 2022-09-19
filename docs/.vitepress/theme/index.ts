@@ -4,7 +4,10 @@ import './icon-font/iconfont.css'
 import { App } from 'vue'
 import { dispatchEventStorage } from '../utils/tools'
 const modules = import.meta.glob('../component/*.vue')
-dispatchEventStorage()
+if (typeof window !== 'undefined') {
+  dispatchEventStorage()
+}
+
 export default {
   ...DefaultTheme,
   enhanceApp ({ app }: { app: App }) {

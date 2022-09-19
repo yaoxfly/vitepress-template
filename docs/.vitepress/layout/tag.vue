@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, watch, ref } from 'vue'
+import { toRefs, watch, ref, onMounted } from 'vue'
 import { getPropertyValue } from '../utils/tools'
 const props = defineProps({
   color: {
@@ -8,6 +8,10 @@ const props = defineProps({
       return 'green'
     }
   }
+})
+
+onMounted(() => {
+  colorTransform()
 })
 
 const { color } = toRefs(props)
@@ -21,15 +25,17 @@ watch(color, (newName) => {
 }
 )
 
-const keyMap = {
-  red: getPropertyValue('--vp-c-red'),
-  green: getPropertyValue('--vp-c-green'),
-  yellow: getPropertyValue('--vp-c-yellow'),
-  gray: getPropertyValue('--vp-c-gray'),
-  black: getPropertyValue('--vp-c-black')
+const colorTransform = () => {
+  const keyMap = {
+    red: getPropertyValue('--vp-c-red'),
+    green: getPropertyValue('--vp-c-green'),
+    yellow: getPropertyValue('--vp-c-yellow'),
+    gray: getPropertyValue('--vp-c-gray'),
+    black: getPropertyValue('--vp-c-black')
+  }
+  tempColor.value = keyMap[color.value] || tempColor.value
 }
 
-tempColor.value = keyMap[color.value] || tempColor.value
 </script>
 
 <template>
