@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { base } from './custom-config'
 export default defineConfig(
   {
     /** ---基础配置-- */
@@ -11,7 +12,7 @@ export default defineConfig(
       ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
     ],
     /** ---部署配置-- */
-    base: '/',
+    base,
     /** ---主题配置-- */
     themeConfig: {
       /** ---头部导航-- */
