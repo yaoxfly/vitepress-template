@@ -1,49 +1,43 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { StorageSetItemEvent, setProperty, getPropertyValue } from '../utils/tools'
+import { StorageSetItemEvent, setProperty, getPropertyValue, imgReady } from '../utils/tools'
 import Main from './main.vue'
 import { base } from '../custom-config'
-onMounted(() => {
-  init()
-})
+import MeteorShower from './meteor-shower.vue'
 
 /** --banner --- */
-const image = ref(`url('${base}/home/banner_${Math.round(Math.random()) + 1}.jpg') top center no-repeat`)
+const num = Math.round(Math.random()) + 1
+const img = `${base}/home/banner_${num}.jpg`
+const minImg = `${base}/home/banner_min_${num}.jpg`
+const image = ref(`url('${img}') top center no-repeat`)
+const minImage = ref(`url('${minImg}') top center no-repeat`)
 
-/** --初始化 --- */
-const init = () => {
-  const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
-  const Layout = document.querySelector('.Layout') as HTMLElement
-  vpNav?.classList.add('is-home')
-  Layout?.classList.add('is-home')
-  setTheme(window.localStorage.getItem('vitepress-theme-appearance'))
-  window.addEventListener('storageSetItemEvent', (e: StorageSetItemEvent) => {
-    if (e.key === 'vitepress-theme-appearance') {
-      setTheme(e.newValue)
-    }
-  })
-  scroll()
-  window.addEventListener('scroll', () => { scroll() }, true)
-}
+imgReady([minImg]).then((res) => {
+  console.log(res)
+})
 
-/** --主题切换 --- */
+/** --theme --- */
+const theme = ref(window.localStorage.getItem('vitepress-theme-appearance'))
 const setTheme = (value?: string | null) => {
   const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
   if (value === 'dark') {
     setProperty('--custom-c-text-1', getPropertyValue('--vp-c-text-light-1'))
     setProperty('--custom-c-nav-bc', 'rgba(36, 36, 36)')
     setProperty('--custom-c-footer-bc', 'bottom')
+    // 不在首页找不到vpNav
     vpNav?.classList.add('filter')
     vpNav?.classList.remove('transparent')
+    theme.value = 'dark'
   } else {
     setProperty('--custom-c-text-1', getPropertyValue('--vp-c-text-dark-1'))
     setProperty('--custom-c-nav-bc', 'rgba(255, 255, 255, 0.7)')
     setProperty('--custom-c-footer-bc', 'top')
     scroll(value)
+    theme.value = 'auto'
   }
 }
 
-/** --nav滚动样式交替 --- */
+/** --nav --- */
 const scroll = (theme = window.localStorage.getItem('vitepress-theme-appearance')) => {
   if (theme === 'dark') return
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -57,10 +51,65 @@ const scroll = (theme = window.localStorage.getItem('vitepress-theme-appearance'
   }
 }
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', () => { scroll() })
+const scrollToContent = () => {
+  const now = window.scrollY
+  const layoutMain = document.querySelector('.layout__nav') as HTMLElement
+  let dist = layoutMain.offsetHeight - 60
+  // 可滚动高度 = 整个文档的高度 - 浏览器窗口的视口（viewport）高度
+  const availableHeight = document.documentElement.scrollHeight - window.innerHeight
+  if (dist > availableHeight) {
+    dist = availableHeight
+  }
+  const step = (dist - now) / 10
+  setTimeout(() => {
+    // 如果当前的滚动的距离不大于 10px，则直接滚动到目标位置，并退出递归
+    if (Math.abs(step) <= 10) {
+      return window.scrollTo(0, dist)
+    }
+    window.scrollTo(0, now + step)
+    scrollToContent()
+  }, 10)
+}
+
+/** --init --- */
+const scrollFn = () => { scroll() }
+const storageSetItemEvent = (e: StorageSetItemEvent) => {
+  if (e.key === 'vitepress-theme-appearance') {
+    setTheme(e.newValue)
+  }
+}
+const showStartBtn = ref(true)
+const resize = () => {
+  const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+  showStartBtn.value = true
+  if (w <= 960) {
+    showStartBtn.value = false
+  }
+}
+
+const init = () => {
+  const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
   const Layout = document.querySelector('.Layout') as HTMLElement
-  Layout?.classList.remove('is-home')
+  vpNav.classList.add('is-home')
+  Layout.classList.add('is-home')
+  setTheme(theme.value)
+  window.addEventListener('storageSetItemEvent', storageSetItemEvent)
+  scrollFn()
+  window.addEventListener('scroll', scrollFn)
+  resize()
+  window.addEventListener('resize', resize)
+}
+
+onMounted(() => {
+  init()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollFn)
+  window.removeEventListener('storageSetItemEvent', storageSetItemEvent)
+  window.removeEventListener('resize', resize)
+  const Layout = document.querySelector('.Layout') as HTMLElement
+  Layout.classList.remove('is-home')
 })
 
 </script>
@@ -80,8 +129,15 @@ export default {
           <p class="layout__banner-animation">
             Technology Change The World
           </p>
+
+          <span
+            v-if="showStartBtn"
+            class="layout__nav-button"
+            @click="scrollToContent"
+          >开始探索</span>
         </div>
       </div>
+      <MeteorShower :theme="theme" />
     </section>
     <Main />
   </div>
@@ -148,6 +204,10 @@ export default {
           color: var(--custom-c-text-1);
         }
 
+        .VPFlyout .icon {
+          color: var(--custom-c-text-1);
+        }
+
         .menu+.translations::before,
         .menu+.appearance::before,
         .menu+.social-links::before,
@@ -179,6 +239,10 @@ export default {
           color: inherit;
         }
 
+        .VPFlyout .icon {
+          color: inherit;
+        }
+
         .menu+.translations::before,
         .menu+.appearance::before,
         .menu+.social-links::before,
@@ -205,10 +269,11 @@ export default {
 .layout {
   &__nav {
     width: 100%;
-    height: 60vh;
-    animation: position 10s linear infinite alternate, fadeInDown 1s both;
+    height: 100vh;
     background: v-bind(image);
-    background-size: 110% 100%;
+    animation: fadeInDown 1s both;
+    background-size: 100% 100%;
+    position: relative;
 
     @keyframes fadeInDown {
       from {
@@ -222,19 +287,57 @@ export default {
       }
     }
 
-    @keyframes position {
+    @keyframes hidden {
       from {
-        background-position-x: 0;
+        opacity: 1;
+        z-index: 1;
       }
 
       to {
-        background-position-x: center;
+        opacity: 0;
+        z-index: -1
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background: v-bind(minImage);
+      background-size: 100% 100%;
+      animation: hidden 2s ease;
+      opacity: 0;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &-button {
+      position: absolute;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+      z-index: 2;
+      bottom: 10vh;
+      font-size: var(--custom-font-size-content);
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .3s linear;
+      user-select: none;
+
+      &:hover {
+        color: var(--vp-c-text-light-1);
+        background: #fff;
       }
     }
   }
 
   &__banner-text {
     //一定要定宽、定高才能垂直居中
+    position: absolute;
     width: 100%;
     height: 100%;
     color: #fff;
@@ -242,6 +345,7 @@ export default {
     align-items: center;
     justify-content: center;
     text-align: center;
+    z-index: 2;
   }
 
   &__banner-animation {
@@ -268,7 +372,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 960px) {
     .layout__nav {
       height: 40vh;
     }
