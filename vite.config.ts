@@ -30,6 +30,19 @@ export default defineConfig({
       '@': resolve(__dirname, 'docs')
     }
   },
+
+  build: {
+    target: 'es2015',
+    cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
+  },
+
   css: {
     postcss: {
       plugins: [
