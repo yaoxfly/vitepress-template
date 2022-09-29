@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, toRefs, computed } from 'vue'
+import { toRefs, computed } from 'vue'
 interface Props {
   theme: string | null
 }
@@ -97,7 +97,7 @@ const opacity = computed(() => {
 
     &:nth-child(3) {
       top: 80px;
-      right: 0px;
+      right: 100px;
       left: initial;
       animation-delay: 0.4s;
       animation-duration: 3s;
@@ -129,7 +129,7 @@ const opacity = computed(() => {
 
     &:nth-child(7) {
       top: 300px;
-      right: 0px;
+      right: 240px;
       left: initial;
       animation-delay: 0.2s;
       animation-duration: 3.75s;
@@ -153,7 +153,7 @@ const opacity = computed(() => {
 
     &:nth-child(10) {
       top: 0;
-      right: 110px;
+      right: 360px;
       left: initial;
       animation-delay: 2.6s;
       animation-duration: 3.54s;
