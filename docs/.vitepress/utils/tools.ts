@@ -43,3 +43,25 @@ export const setProperty = (key:string, value:any) => {
 export const getPropertyValue = (property:string) => {
   return getComputedStyle(getRoot()).getPropertyValue(property)
 }
+
+export const imgReady = (pics: Array<string>) => {
+  const picsAll = pics.map((imgUrl) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      // 提取图片地址
+      img.src = imgUrl
+        .replace('src=', '')
+        .replace('amp;', '')
+        .replace(/^['|"](.*)['|"]$/, '$1')
+      img.onload = () => resolve(imgUrl)
+      img.onerror = () => reject(new Error(imgUrl + ' load error'))
+    })
+  })
+  return Promise.all(picsAll)
+    .then(() => {
+      return true
+    })
+    .catch(() => {
+      return false
+    })
+}

@@ -4,6 +4,7 @@ import { StorageSetItemEvent, setProperty, getPropertyValue, imgReady } from '..
 import Main from './main.vue'
 import { base } from '../custom-config'
 import MeteorShower from './meteor-shower.vue'
+import Loading from './loading.vue'
 
 /** --banner --- */
 const num = Math.round(Math.random()) + 1
@@ -11,13 +12,14 @@ const img = `${base}/home/banner_${num}.jpg`
 const minImg = `${base}/home/banner_min_${num}.jpg`
 const image = ref(`url('${img}') top center no-repeat`)
 const minImage = ref(`url('${minImg}') top center no-repeat`)
-
-imgReady([minImg]).then((res) => {
-  console.log(res)
+const loading = ref(false)
+loading.value = true
+imgReady([img]).then((res) => {
+  loading.value = false
 })
 
 /** --theme --- */
-const theme = ref(window.localStorage.getItem('vitepress-theme-appearance'))
+const theme = ref('')
 const setTheme = (value?: string | null) => {
   const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
   if (value === 'dark') {
@@ -92,6 +94,7 @@ const init = () => {
   const Layout = document.querySelector('.Layout') as HTMLElement
   vpNav.classList.add('is-home')
   Layout.classList.add('is-home')
+  theme.value = window.localStorage.getItem('vitepress-theme-appearance') || ''
   setTheme(theme.value)
   window.addEventListener('storageSetItemEvent', storageSetItemEvent)
   scrollFn()
@@ -122,6 +125,10 @@ export default {
 
 <template>
   <div class="layout">
+    <Loading
+      v-show="loading"
+      :loading="loading"
+    />
     <section class="layout__nav">
       <div class="layout__banner-text">
         <div>
