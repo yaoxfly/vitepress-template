@@ -9,6 +9,7 @@ export default defineConfig(
     title: 'yaoxfly',
     lastUpdated: true,
     description: 'yaoxfly&个人博客',
+    titleTemplate: false,
     head: [
       ['link', { rel: 'icon', href: '/icon/favicon.ico' }],
       ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
@@ -22,11 +23,12 @@ export default defineConfig(
       /** ---侧边栏-- */
       sidebar,
       siteTitle: 'yaoxfly',
+      outlineTitle: '这一页',
       // logo: '/icon/favicon.ico',
       algolia: {
-        appId: 'HAT6A1ER66',
+        appId: 'UXHUDO5MBD',
         apiKey: '9fe72716842d32cc387517b399a30a8d',
-        indexName: ''
+        indexName: 'vitepress-template'
       },
       lastUpdatedText: '最近更新时间',
       socialLinks: [
