@@ -155,6 +155,15 @@ export default {
 .Layout {
   &.is-home {
     background: var(--vp-c-bg-alt);
+    //距离footer的距离
+    .VPHome {
+      padding-bottom: 0;
+    }
+    @media (min-width: 768px) {
+      .VPHome {
+        padding-bottom: 0;
+      }
+    }
   }
 
   .VPNav.no-sidebar.is-home {

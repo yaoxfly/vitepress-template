@@ -1,13 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import './icon-font/iconfont.css'
-import { App } from 'vue'
+import { App, onMounted } from 'vue'
 import { dispatchEventStorage } from '../utils/tools'
 const modules = import.meta.glob('../component/*.vue')
-if (typeof window !== 'undefined') {
-  dispatchEventStorage()
-}
-
 export default {
   ...DefaultTheme,
   enhanceApp ({ app }: { app: App }) {
@@ -16,5 +12,11 @@ export default {
         app.component(value.default.name, value.default)
       })
     }
+  },
+
+  setup () {
+    onMounted(() => {
+      dispatchEventStorage()
+    })
   }
 }
