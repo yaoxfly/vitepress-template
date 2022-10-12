@@ -1,5 +1,4 @@
 export default {
-
   '/component/': [
     {
       text: '一级标题',
@@ -21,6 +20,17 @@ export default {
       {
         text: '二级标题2',
         link: '/utils/test'
+      }
+    ]
+  }],
+
+  '/blog/': [{
+    text: '博客列表',
+    collapsible: false,
+    items: [
+      {
+        text: '博客详情',
+        link: '/blog/details'
       }
     ]
   }]

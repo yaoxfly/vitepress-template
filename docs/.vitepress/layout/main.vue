@@ -4,7 +4,7 @@
 -->
 <script setup lang="ts">
 import Info from './info.vue'
-import Card from './card.vue'
+import BlogList from './blog-list.vue'
 import TagLists from './tag-lists.vue'
 import RecommendList from './recommend-list.vue'
 </script>
@@ -12,7 +12,7 @@ import RecommendList from './recommend-list.vue'
 <template>
   <div class="layout-main">
     <div class="layout-main__left ">
-      <Card />
+      <BlogList />
     </div>
     <div class="layout-main__right ">
       <Info />
@@ -70,10 +70,6 @@ import RecommendList from './recommend-list.vue'
 
     &__right {
       width: 80%;
-    }
-
-    .card {
-      margin-top: 20px;
     }
   }
 

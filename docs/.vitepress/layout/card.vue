@@ -1,27 +1,48 @@
-<!--
-* @Author: yx
-* @Description: 博客内容
--->
+
 <script setup lang="ts">
+import { useAttrs } from 'vue'
 import Tag from './tag.vue'
+const attrs = useAttrs()
+const props = defineProps({
+  title: {
+    type: String,
+    default: () => ''
+  },
+  content: {
+    type: String,
+    default: () => ''
+  },
+
+  time: {
+    type: String,
+    default: () => ''
+  },
+
+  tag: {
+    type: String,
+    default: () => ''
+  }
+
+})
+
 </script>
 
 <template>
   <div class="card common-piece">
     <p class="card__title">
-      我是标题标题标题标题我是标题标题标题标题我是标题标题标题标题我是标题标题标题标题我是标题标题标题标题我是标题标题标题标题
+      {{ title }}
     </p>
 
     <p class="card__content">
-      如何将 Vue2 代码一键转成 Vue3 代码如何将 Vue2 代码一键转成 Vue3 代码 如何将 Vue2 代码一键转成 Vue3 代码如何将 Vue2 代码一键转成 Vue3 代码
+      {{ content }}
     </p>
 
     <p class="card__time">
-      2021-10-06
+      {{ time }}
     </p>
 
-    <tag>
-      vue
+    <tag v-bind="attrs">
+      {{ tag }}
     </tag>
   </div>
 </template>
