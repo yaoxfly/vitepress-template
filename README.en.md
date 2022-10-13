@@ -1,3 +1,5 @@
+[English](README.en.md)  | [中文](README.md)
+
 # Vitepress-template
 Based on vitepress, integrates ts, and other simple configurations, themes, etc., out of the box, and a tool for writing documents
 

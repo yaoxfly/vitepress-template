@@ -1,4 +1,6 @@
-# vitepress-template
+ [中文](README.md) | [English](README.en.md) 
+
+# vitepress-template 
 基于vitepress，集成了ts，以及其他简单的配置、主题等，开箱即用，写文档利器
 
 # 基础配置
@@ -11,3 +13,4 @@
 
 # demo地址
 [模板范例在线访问(Ctrl+点击,可新标签页打开)](https://yaoxfly.github.io/vitepress-template-site)
+[听完](README.en.md)
