@@ -13,4 +13,3 @@
 
 # demo地址
 [模板范例在线访问(Ctrl+点击,可新标签页打开)](https://yaoxfly.github.io/vitepress-template-site)
-[听完](README.en.md)
