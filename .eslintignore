@@ -6,9 +6,7 @@
 .idea
 .husky
 .local
-dist
 node_modules
-Dockerfile
-stats.html
-tailwind.config.js
 !docs/.vitepress 
+docs/.vitepress/cache
+docs/.vitepress/dist
