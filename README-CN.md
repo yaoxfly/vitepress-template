@@ -12,5 +12,32 @@
 
 > `ESLint` 默认忽略.开头的目录,  在`.eslintignore`中设置 `!docs/.vitepress` 不让忽略`.vitepress`
 
+
+# 使用
+
+运行
+
+```js
+pnpm run dev
+```
+
+打包
+
+```js
+pnpm run  build
+```
+
+预览
+
+```js
+pnpm run serve 
+or
+pnpm run preview // 先执行pnpm run build 再执行 pnpm run serve 
+```
+
+> 打包后才能执行预览操作
+
+
+
 # demo地址
 [模板范例在线访问(Ctrl+点击,可新标签页打开)](https://yaoxfly.github.io/vitepress-template-site)

@@ -10,5 +10,31 @@ Based on vitepress, integrates ts, and other simple configurations, themes, etc.
 + Custom theme
 > ESLint ignored by default . The beginning of the directory, .eslint ignore set in !docs/.vitepress Do not let ignore.vitepress
 
+
+# Use 
+
+Run
+
+```js
+pnpm run dev
+```
+
+Pack
+
+```js
+pnpm run  build
+```
+
+Preview
+
+```js
+pnpm run serve 
+or
+pnpm run preview // Run pnpm run build and then run pnpm run serve
+```
+
+> The preview operation can only be performed after packaging
+
 # Demo address
 [Template sample online access (Ctrl+click to open in new tab)](https://yaoxfly.github.io/vitepress-template-site)
+
