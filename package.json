@@ -7,9 +7,11 @@
     "dev": "vitepress dev docs  --host",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
-    "docs:dev": "vitepress dev docs",
+    "preview": "vitepress build docs && vitepress serve docs",
+    "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
+    "docs:preview": "vitepress build docs && vitepress serve docs",
     "deploy": "bash deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
