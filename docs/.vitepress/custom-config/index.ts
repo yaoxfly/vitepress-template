@@ -1,1 +1,1 @@
-export const base = '/vitepress-template-site'
+export const base = '/vitepress-template-site/'

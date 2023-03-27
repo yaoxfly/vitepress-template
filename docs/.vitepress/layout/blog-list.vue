@@ -2,8 +2,8 @@
 <script setup lang="ts">
 import Card from './card.vue'
 import { onMounted, onUnmounted, ref, computed } from 'vue'
-import { useRouter } from 'vitepress'
-import { base } from '../custom-config'
+import { useRouter, withBase } from 'vitepress'
+
 const list = [
   {
     title: '1',
@@ -140,7 +140,7 @@ const handleScroll = () => {
 
 const { go } = useRouter() // 不能写函数里
 const jump = (path?: string) => {
-  go(`${base}/blog/details`)
+  go(withBase(`${'/blog/details'}`))
 }
 
 const init = () => {

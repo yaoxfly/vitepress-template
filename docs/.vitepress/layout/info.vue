@@ -3,6 +3,31 @@
 * @Description: 用户信息
 -->
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
+/** 关注我 背景色 */
+import { StorageSetItemEvent, getPropertyValue } from '../utils/tools'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let storageSetItemEvent: any = null
+const bookmarkBac = ref('')
+const setFocusBac = () => {
+  bookmarkBac.value = window.localStorage.getItem('vitepress-theme-appearance') === 'dark' ? '#484848' : getPropertyValue('--vp-c-black')
+  storageSetItemEvent = (e: StorageSetItemEvent) => {
+    if (e.key === 'vitepress-theme-appearance') {
+      const keyMap = {
+        dark: '#484848',
+        auto: getPropertyValue('--vp-c-black')
+      }
+      bookmarkBac.value = keyMap[e.newValue || 'auto']
+    }
+  }
+  window.addEventListener('storageSetItemEvent', storageSetItemEvent)
+}
+
+onMounted(() => {
+  // ssr window必须写在onMounted生命周期里
+  setFocusBac()
+})
+
 const socialLinks = [
   {
     path: 'https://github.com/yaoxfly',
@@ -22,6 +47,11 @@ type SocialLinks = {
 const jump = (param: SocialLinks) => {
   window.open(param.path)
 }
+
+onUnmounted(() => {
+  window.removeEventListener('storageSetItemEvent', storageSetItemEvent)
+})
+
 </script>
 
 <template>
@@ -116,7 +146,7 @@ const jump = (param: SocialLinks) => {
 
   &__add-bookmark {
     line-height: 2;
-    background: var(--vp-c-gray-dark-2);
+    background: v-bind(bookmarkBac) ;
     color: #fff;
     user-select: none;
     cursor: pointer;

@@ -2,14 +2,14 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { StorageSetItemEvent, setProperty, getPropertyValue, imgReady } from '../utils/tools'
 import Main from './main.vue'
-import { base } from '../custom-config'
+import { withBase } from 'vitepress'
 import MeteorShower from './meteor-shower.vue'
 import Loading from './loading.vue'
 
 /** --banner --- */
 const num = Math.round(Math.random()) + 1
-const img = `${base}/home/banner_${num}.jpg`
-const minImg = `${base}/home/banner_min_${num}.jpg`
+const img = withBase(`/home/banner_${num}.jpg`)
+const minImg = withBase(`/home/banner_min_${num}.jpg`)
 const image = ref(`url('${img}') top center no-repeat`)
 const minImage = ref(`url('${minImg}') top center no-repeat`)
 const loading = ref(false)
@@ -21,7 +21,7 @@ imgReady([img]).then((res) => {
 /** --theme --- */
 const theme = ref('')
 const setTheme = (value?: string | null) => {
-  const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
+  const vpNav = document.querySelector('.Layout .VPNav.is-home') as HTMLElement
   if (value === 'dark') {
     setProperty('--custom-c-text-1', getPropertyValue('--vp-c-text-light-1'))
     setProperty('--custom-c-nav-bc', 'rgba(36, 36, 36)')
@@ -43,7 +43,9 @@ const setTheme = (value?: string | null) => {
 const scroll = (theme = window.localStorage.getItem('vitepress-theme-appearance')) => {
   if (theme === 'dark') return
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-  const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
+  const vpNav = document.querySelector('.Layout .VPNav.is-home') as HTMLElement
+  const VPNavBar = document.querySelector('.Layout .VPNavBar') as HTMLElement
+  VPNavBar?.classList.remove('fill') // 61版本白天模式需要去除当前样式
   if (scrollTop > vpNav?.offsetHeight) {
     vpNav?.classList.add('filter')
     vpNav?.classList.remove('transparent')
@@ -90,10 +92,11 @@ const resize = () => {
 }
 
 const init = () => {
-  const vpNav = document.querySelector('.Layout .VPNav.no-sidebar') as HTMLElement
+  const customLayout = document.querySelector('.layout ') as HTMLElement
+  const vpNav = document.querySelector('.Layout .VPNav') as HTMLElement
   const Layout = document.querySelector('.Layout') as HTMLElement
-  vpNav.classList.add('is-home')
-  Layout.classList.add('is-home')
+  customLayout && vpNav?.classList.add('is-home')
+  customLayout && Layout?.classList.add('is-home')
   theme.value = window.localStorage.getItem('vitepress-theme-appearance') || ''
   setTheme(theme.value)
   window.addEventListener('storageSetItemEvent', storageSetItemEvent)
@@ -112,7 +115,12 @@ onUnmounted(() => {
   window.removeEventListener('storageSetItemEvent', storageSetItemEvent)
   window.removeEventListener('resize', resize)
   const Layout = document.querySelector('.Layout') as HTMLElement
-  Layout.classList.remove('is-home')
+  const VPNav = document.querySelector('.Layout .VPNav') as HTMLElement
+  Layout?.classList.remove('is-home')
+  if (VPNav) {
+    VPNav.classList.remove('is-home')
+    VPNav.classList.remove('transparent')
+  }
 })
 
 </script>
@@ -164,9 +172,9 @@ export default {
         padding-bottom: 0;
       }
     }
-  }
 
-  .VPNav.no-sidebar.is-home {
+  }
+  .VPNav {
     &.transparent {
       .VPNavBarTitle {
         @media (min-width: 960px) {
@@ -203,7 +211,7 @@ export default {
 
     /*------不再改变的--end------*/
 
-    .VPNav.no-sidebar.is-home {
+    .VPNav.is-home {
       &.transparent {
         backdrop-filter: none;
         background: transparent;
@@ -240,7 +248,7 @@ export default {
       &.filter {
         backdrop-filter: saturate(50%) blur(8px);
         /* 背景色-平滑变换 */
-        transition: background-color 1s ease;
+        transition: background-color 0.5s ease;
         background: var(--custom-c-nav-bc);
 
         .VPNavBarMenuLink {
@@ -341,7 +349,7 @@ export default {
       padding: 4px 12px;
       border-radius: 4px;
       cursor: pointer;
-      transition: all .3s linear;
+      transition: all .5s linear;
       user-select: none;
 
       &:hover {
