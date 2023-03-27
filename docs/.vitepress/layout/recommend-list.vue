@@ -45,22 +45,18 @@ const card = [
 <style lang="scss">
 .recommend-list {
   margin-top: 20px;
-
   &__card {
     display: flex;
     align-items: flex-start;
-
     &:not(:first-child) {
       margin-top: 20px;
     }
-
     cursor: pointer;
-
     // border-bottom: 1px solid yellow;
     &:hover {
       .recommend-list__content {
         margin-left: 16px;
-        transition:all 0.3s ease;
+        transition:all 0.5s ease;
       }
     }
   }
@@ -76,7 +72,7 @@ const card = [
 
   &__content {
     margin-left: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     &:hover{
        color: var(--vp-c-brand);
     }
@@ -95,7 +91,7 @@ const card = [
   }
 
   &__color-4 {
-    background: var(--vp-c-gray-light-1);
+    background: var(--vp-c-gray);
   }
 }
 </style>

@@ -34,12 +34,12 @@
   max-height: 100px;
   border-radius: 4px;
   background-color: rgba(144, 147, 153, 0.4);
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.6);
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
 }
 
 /*******common*********/
@@ -68,7 +68,7 @@
     left: 0;
     left: 25%;
     top: 42px;
-    animation: leftToRight .3s linear;
+    animation: leftToRight .5s linear;
   }
 
   @keyframes leftToRight {
@@ -79,21 +79,5 @@
     to {
       width: 50%;
     }
-  }
-
-
-  /**---黑暗模式除首页外导航栏最右边块缺失补充-----**/
-  .dark .VPNavBar.has-sidebar .content {
-    position: relative;
-  }
-
-  .dark .VPNavBar.has-sidebar .content::after {
-    content: '';
-    position: absolute;
-    width: 44px;
-    height: 100%;
-    top: 0;
-    right: -44px;
-    background: rgba(36, 36, 36, 0.7);
   }
 }

@@ -1,8 +1,9 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 2889198 */
+  font-family: "iconfont";
+  /* Project id 2889198 */
   src: url('iconfont.woff2?t=1635073304110') format('woff2'),
-       url('iconfont.woff?t=1635073304110') format('woff'),
-       url('iconfont.ttf?t=1635073304110') format('truetype');
+    url('iconfont.woff?t=1635073304110') format('woff'),
+    url('iconfont.ttf?t=1635073304110') format('truetype');
 }
 
 .iconfont {
@@ -15,6 +16,7 @@
 
 .icon-gitee:before {
   content: "\e677";
+
 }
 
 .icon-bokeblogger:before {
@@ -24,4 +26,3 @@
 .icon-github:before {
   content: "\e64c";
 }
-
