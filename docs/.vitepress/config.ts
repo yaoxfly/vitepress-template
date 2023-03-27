@@ -11,7 +11,7 @@ export default defineConfig(
     description: 'yaoxfly&个人博客',
     titleTemplate: false,
     head: [
-      ['link', { rel: 'icon', href: '/icon/favicon.ico' }],
+      ['link', { rel: 'icon', href: `${base}icon/favicon.ico` }],
       ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
     ],
     /** ---部署配置-- */
@@ -23,7 +23,7 @@ export default defineConfig(
       /** ---侧边栏-- */
       sidebar,
       siteTitle: 'yaoxfly',
-      outlineTitle: '这一页',
+      outlineTitle: '当前页',
       // logo: '/icon/favicon.ico',
       algolia: {
         appId: 'UXHUDO5MBD',
