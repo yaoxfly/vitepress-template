@@ -11,8 +11,7 @@ export default defineConfig(
     description: 'yaoxfly&个人博客',
     titleTemplate: false,
     head: [
-      ['link', { rel: 'icon', href: `${base}icon/favicon.ico` }],
-      ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
+      ['link', { rel: 'icon', href: `${base}icon/favicon.ico` }]
     ],
     /** ---部署配置-- */
     base,
