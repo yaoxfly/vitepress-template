@@ -29,7 +29,7 @@ export default defineConfig(
       /** ---侧边栏-- */
       sidebar,
       siteTitle: 'yaoxfly',
-      outlineTitle: '当前页',
+      outlineTitle: '目录',
       // logo: '/icon/favicon.ico',
       algolia: {
         appId: 'GMQ8P1YNY9',
@@ -107,13 +107,24 @@ export default defineConfig(
 
       build: {
         target: 'es2015',
-        cssTarget: 'es2015',
         cssCodeSplit: false,
         minify: 'terser',
         terserOptions: {
           compress: {
             drop_console: true,
             drop_debugger: true
+          }
+        },
+        chunkSizeWarningLimit: 500,
+        rollupOptions: {
+          output: {
+            chunkFileNames: 'assets/chunks/[name]-[hash].js',
+            assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+            manualChunks (id) { // 静态资源分拆打包，解决自定义全局样式，打包后置于最后面覆盖页面里的样式
+              if (id.includes('node_modules')) {
+                return id.toString().split('node_modules/')[1].split('/')[0].toString()
+              }
+            }
           }
         }
       },
