@@ -9,4 +9,4 @@
 node_modules
 !docs/.vitepress 
 docs/.vitepress/cache
-docs/.vitepress/dist
+docs/.vitepress/dist/

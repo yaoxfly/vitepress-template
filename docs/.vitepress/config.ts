@@ -3,11 +3,11 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import autoprefixer from 'autoprefixer'
 import { resolve } from 'path'
 import eslintPlugin from 'vite-plugin-eslint'
-// import browserslist from 'browserslist'
-// import legacy from '@vitejs/plugin-legacy' // npx browserslist "> 0.04%, last 2 versions,Firefox ESR,not dead" 查询兼容的浏览器
 import { base } from './custom-config'
 import nav from './custom-config/nav'
 import sidebar from './custom-config/sidebar'
+// import browserslist from 'browserslist'
+// import legacy from '@vitejs/plugin-legacy' // npx browserslist "> 0.04%, last 2 versions,Firefox ESR,not dead" 查询兼容的浏览器
 // const browserslistConfig = browserslist.loadConfig({ path: '.' })
 export default defineConfig(
   {
