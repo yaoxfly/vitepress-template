@@ -6,6 +6,6 @@
     "allowSyntheticDefaultImports": true,
     "types": ["vite/client"]
   },
-  "include": ["vite.config.ts"],
+  "include": ["docs/vite.config.ts"],
   "exclude": ["**/node_modules/**", "**/dist/**"]
 }
