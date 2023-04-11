@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toRefs, watch, ref, onMounted } from 'vue'
-import { getPropertyValue } from '../utils/tools'
+import { getPropertyValue } from '@/utils/tools'
+import { KeyMap } from '@/utils/type'
 const props = defineProps({
   color: {
     type: String,
@@ -26,7 +27,7 @@ watch(color, (newName) => {
 )
 
 const colorTransform = () => {
-  const keyMap = {
+  const keyMap:KeyMap = {
     red: getPropertyValue('--vp-c-red'),
     green: getPropertyValue('--vp-c-green'),
     yellow: getPropertyValue('--vp-c-yellow'),

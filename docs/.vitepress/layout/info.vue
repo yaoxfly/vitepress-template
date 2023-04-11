@@ -5,7 +5,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 /** 关注我 背景色 */
-import { StorageSetItemEvent, getPropertyValue } from '../utils/tools'
+import { StorageSetItemEvent, getPropertyValue } from '@/utils/tools'
+import { KeyMap } from '@/utils/type'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let storageSetItemEvent: any = null
 const bookmarkBac = ref('')
@@ -13,7 +14,7 @@ const setFocusBac = () => {
   bookmarkBac.value = window.localStorage.getItem('vitepress-theme-appearance') === 'dark' ? '#484848' : getPropertyValue('--vp-c-black')
   storageSetItemEvent = (e: StorageSetItemEvent) => {
     if (e.key === 'vitepress-theme-appearance') {
-      const keyMap = {
+      const keyMap:KeyMap = {
         dark: '#484848',
         auto: getPropertyValue('--vp-c-black')
       }
