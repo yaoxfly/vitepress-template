@@ -55,7 +55,7 @@ export default defineConfig(
     vite: {
       resolve: {
         alias: {
-          '@': resolve(__dirname, 'docs')
+          '@': resolve(__dirname, './')
         }
       },
       plugins: [

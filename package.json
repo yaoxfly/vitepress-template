@@ -16,7 +16,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
   },
-  "keywords": [],
+  "keywords": [
+    "yaoxfly",
+    "vitepress",
+    "vite",
+    "typescript",
+    "vitepress-template"
+  ],
   "author": "yaoxfly",
   "license": "MIC",
   "dependencies": {
