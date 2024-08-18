@@ -14,7 +14,8 @@
     "skipLibCheck": true,
     "types": ["vite/client"],
     "paths": {
-      "@/*": ["./docs/.vitepress/*"]
+      "@/*": ["./docs/.vitepress/*"],
+      "vite": ["./node_modules/vite"]
     }
   },
   "include": [
