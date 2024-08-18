@@ -1,10 +1,10 @@
 [English](README.md)  | [中文](README-CN.md)
 
 # Vitepress-template
-Based on vitepress, integrates ts, and other simple configurations, themes, etc., out of the box, and a tool for writing documents
+Based on vitepress, integrates Typescript, and other simple configurations, themes, etc., out of the box, and a tool for writing documents
 
 # Basic configuration
-+ typescript
++ Typescript
 + Automatically register global components
 + Eslint
 + Custom theme
@@ -36,5 +36,6 @@ pnpm run preview // Run pnpm run build and then run pnpm run serve
 > The preview operation can only be performed after packaging
 
 # Demo address
-[Template sample online access (Ctrl+click to open in new tab)](https://yaoxfly.github.io/vitepress-template-site)
+Ctrl+click to open in new tab
+[Template sample online access ](https://yaoxfly.github.io/vitepress-template-site)
 
