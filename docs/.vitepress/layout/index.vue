@@ -174,7 +174,7 @@ export default {
         padding-bottom: 0;
       }
 
-      .wrapper[data-v-ff4b376a] {
+      .wrapper {
         padding: 0px 80px 0 76px;
       }
     }
