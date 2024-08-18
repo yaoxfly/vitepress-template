@@ -133,10 +133,7 @@ export default {
 
 <template>
   <div class="layout">
-    <Loading
-      v-show="loading"
-      :loading="loading"
-    />
+    <Loading v-show="loading" :loading="loading" />
     <section class="layout__nav">
       <div class="layout__banner-text">
         <div>
@@ -145,11 +142,7 @@ export default {
             Technology Change The World
           </p>
 
-          <span
-            v-if="showStartBtn"
-            class="layout__nav-button"
-            @click="scrollToContent"
-          >开始探索</span>
+          <span v-if="showStartBtn" class="layout__nav-button" @click="scrollToContent">开始探索</span>
         </div>
       </div>
       <MeteorShower :theme="theme" />
@@ -161,19 +154,43 @@ export default {
 <style lang="scss">
 /**---整体布局--- */
 .Layout {
+
+  .container {
+    width: 100%;
+    padding: 0;
+    max-width: 100%
+  }
+
   &.is-home {
     background: var(--vp-c-bg-alt);
+
     //距离footer的距离
     .VPHome {
       padding-bottom: 0;
     }
+
     @media (min-width: 768px) {
       .VPHome {
         padding-bottom: 0;
       }
+
+      .wrapper[data-v-ff4b376a] {
+        padding: 0px 80px 0 76px;
+      }
     }
 
+    @media (min-width:960px) {
+      .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
+        background-color: transparent;
+      }
+
+    }
+
+    .vp-doc p {
+      margin: 0;
+    }
   }
+
   .VPNav {
     &.transparent {
       .VPNavBarTitle {
@@ -291,6 +308,7 @@ export default {
 
 /**---中间内容区域(自定义)--- */
 .layout {
+
   &__nav {
     width: 100%;
     height: 100vh;

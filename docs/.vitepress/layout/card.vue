@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { useAttrs } from 'vue'
 import Tag from './tag.vue'

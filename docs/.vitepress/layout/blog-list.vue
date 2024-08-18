@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import Card from './card.vue'
 import { onMounted, onUnmounted, ref, computed } from 'vue'
