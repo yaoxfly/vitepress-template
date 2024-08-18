@@ -182,6 +182,7 @@ export default {
     @media (min-width:960px) {
       .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
         background-color: transparent;
+        display: none;
       }
 
     }
