@@ -14,7 +14,7 @@ const setFocusBac = () => {
   bookmarkBac.value = window.localStorage.getItem('vitepress-theme-appearance') === 'dark' ? '#484848' : getPropertyValue('--vp-c-black')
   storageSetItemEvent = (e: StorageSetItemEvent) => {
     if (e.key === 'vitepress-theme-appearance') {
-      const keyMap:KeyMap = {
+      const keyMap: KeyMap = {
         dark: '#484848',
         auto: getPropertyValue('--vp-c-black')
       }
@@ -59,10 +59,7 @@ onUnmounted(() => {
   <div class="layout-info common-piece">
     <div class="layout-info__flex">
       <div class="layout-info__flex-img">
-        <img
-          src="/home/header.jpg"
-          class="layout-info__header"
-        >
+        <img src="/home/header.jpg" class="layout-info__header">
       </div>
       <span class="layout-info__title">yaoxfly</span>
       <div class="layout-info__data">
@@ -80,28 +77,19 @@ onUnmounted(() => {
         </section>
       </div>
 
-      <div
-        class="layout-info__add-bookmark"
-        @click="
-          jump({
-            path: 'https://github.com/yaoxfly',
-          })
-        "
-      >
+      <div class="layout-info__add-bookmark" @click="
+        jump({
+          path: 'https://github.com/yaoxfly',
+        })
+        ">
         关注我
       </div>
 
       <div class="layout-info__icon-content">
-        <p
-          v-for="(item, index) in socialLinks"
-          :key="`socialLinks${index}`"
-          class="iconfont layout-info__icon"
-          :class="[
-            item.icon,
-            { 'layout-info__special-icon': item.icon === 'icon-gitee' },
-          ]"
-          @click="jump(item)"
-        />
+        <p v-for="(item, index) in socialLinks" :key="`socialLinks${index}`" class="iconfont layout-info__icon" :class="[
+          item.icon,
+          { 'layout-info__special-icon': item.icon === 'icon-gitee' },
+        ]" @click="jump(item)" />
       </div>
     </div>
   </div>
@@ -147,7 +135,7 @@ onUnmounted(() => {
 
   &__add-bookmark {
     line-height: 2;
-    background: v-bind(bookmarkBac) ;
+    background: v-bind(bookmarkBac);
     color: #fff;
     user-select: none;
     cursor: pointer;
@@ -155,6 +143,7 @@ onUnmounted(() => {
     border-radius: 4px;
     position: relative;
     z-index: 1;
+
     &::after {
       position: absolute;
       content: '';
@@ -178,6 +167,7 @@ onUnmounted(() => {
   &__icon {
     font-size: 24px;
     transition: color 0.4s ease;
+
     &:hover {
       cursor: pointer;
       color: var(--vp-c-brand);
@@ -189,6 +179,7 @@ onUnmounted(() => {
     display: flex;
     justify-content: center;
     margin-top: 8px;
+
     p:not(:first-child) {
       margin-left: 12px;
     }

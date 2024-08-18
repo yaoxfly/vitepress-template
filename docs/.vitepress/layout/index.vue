@@ -187,9 +187,6 @@ export default {
 
     }
 
-    .vp-doc p {
-      margin: 0;
-    }
   }
 
   .VPNav {
