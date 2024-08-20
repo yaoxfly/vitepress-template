@@ -155,8 +155,7 @@ export default {
 /**---整体布局--- */
 .Layout {
 
-  .container {
-    width: 100%;
+  .vp-doc.container {
     padding: 0;
     max-width: 100%
   }
@@ -174,9 +173,6 @@ export default {
         padding-bottom: 0;
       }
 
-      .wrapper {
-        padding: 0px 80px 0 76px;
-      }
     }
 
     @media (min-width:960px) {
