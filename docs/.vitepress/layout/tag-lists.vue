@@ -12,12 +12,7 @@ const tags = [
 
 <template>
   <div class="common-piece tag-list">
-    <Tag
-      v-for="(item, index) in tags"
-      :key="index"
-      class="tag-list-piece"
-      :color="item.color"
-    >
+    <Tag v-for="(item, index) in tags" :key="index" class="tag-list-piece" :color="item.color">
       {{ item.tag }}
     </Tag>
   </div>
@@ -25,13 +20,14 @@ const tags = [
 
 <style lang="scss">
 .tag-list {
-  padding: 8px 0 16px 20px  ;
+  padding: 8px 0 16px 20px;
   margin-top: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
   line-height: 16px;
+
   &-piece {
     margin-right: 12px;
     margin-top: 8px;

@@ -2,7 +2,6 @@
 import Card from './card.vue'
 import { onMounted, onUnmounted, ref, computed } from 'vue'
 import { useRouter, withBase } from 'vitepress'
-
 const list = [
   {
     title: '1',
@@ -159,20 +158,10 @@ onUnmounted(() => {
 
 <template>
   <div class="blog-list">
-    <Card
-      v-for="(item, index) in data"
-      :key="`card-${index}`"
-      :title="item.title"
-      :content="item.content"
-      :time="item.time"
-      :tag="item.tag"
-      @click="jump(item.path)"
-    />
+    <Card v-for="(item, index) in data" :key="`card-${index}`" :title="item.title" :content="item.content"
+      :time="item.time" :tag="item.tag" @click="jump(item.path)" />
 
-    <div
-      v-show="loading"
-      class="blog-list__bottom-text"
-    >
+    <div v-show="loading" class="blog-list__bottom-text">
       <span>我也是有底线的~</span>
     </div>
   </div>

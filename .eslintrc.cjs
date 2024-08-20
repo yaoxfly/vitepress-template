@@ -24,10 +24,14 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
-    /* --vue相关-- */
+    /* --vue-- */
     'vue/multi-word-component-names': 'off',
     'vue/comment-directive': 'off',
     'no-unused-vars': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/first-attribute-linebreak': 'off',
+    'vue/html-indent': 'off',
+    'vue/html-closing-bracket-newline': 'off',
     'vue/no-parsing-error': [
       2,
       {
@@ -41,6 +45,11 @@ module.exports = {
     'no-unused-expressions': [
       'error',
       { allowShortCircuit: true, allowTernary: true }
-    ]
+    ],
+
+    /* --typescript -- */
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off'
   }
 }
